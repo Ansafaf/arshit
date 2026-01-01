@@ -1,0 +1,37 @@
+{
+  "name": "aaliyah-bootstrap4",
+  "version": "1.0.0",
+  "description": "Aaliyah - Bootstrap 4 Ecommerce Template.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node seed.js",
+    "sass": "sass --watch public/assets/css/style.scss public/assets/css/style.css",
+    "prettier": "prettier --write '**/*.{js,css,scss,html}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asis2016/aaliyah-bootstrap4.git"
+  },
+  "author": "Ashish Singh Maharjan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asis2016/aaliyah-bootstrap4/issues"
+  },
+  "homepage": "https://github.com/asis2016/aaliyah-bootstrap4#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "mongoose": "^9.1.1",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.11",
+    "sass": "^1.32.11"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
+  }
+}
