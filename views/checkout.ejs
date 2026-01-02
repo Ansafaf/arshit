@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Arshit Traders</title>
+    <link rel="icon" type="assets/images/png" href="/assets/images/icon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <style>
+        .checkout-container {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .form-section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .summary-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .checkout-title {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3">
+        <div class="container">
+            <a class="navbar-brand text-primary font-weight-bold" href="/" style="font-size: 2rem;">
+                <i class="fa fa-pagelines" aria-hidden="true"></i> &nbsp;Arshit Traders
+            </a>
+            <div class="ml-auto">
+                <a href="/cart" class="btn btn-outline-primary">Back to Cart</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container checkout-container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="form-section">
+                    <h3 class="checkout-title">Shipping Information</h3>
+                    <form action="/cart/place-order" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" name="fullName" required
+                                    placeholder="John Doe">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" required
+                                    placeholder="john@example.com">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required
+                                    placeholder="+91 XXXXXXXXXX">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Shipping Address</label>
+                            <textarea class="form-control" id="address" name="address" rows="3" required
+                                placeholder="123 Street Name, City, State, PIN"></textarea>
+                        </div>
+
+                        <h3 class="checkout-title mt-4">Payment Method</h3>
+                        <div class="custom-control custom-radio mb-3">
+                            <input type="radio" id="cod" name="paymentMethod" class="custom-control-input" value="COD"
+                                checked>
+                            <label class="custom-control-label" for="cod">Cash on Delivery (COD)</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-3">
+                            <input type="radio" id="online" name="paymentMethod" class="custom-control-input"
+                                value="Online" disabled>
+                            <label class="custom-control-label" for="online">Online Payment (Coming Soon)</label>
+                        </div>
+
+                        <button type="submit"
+                            class="btn btn-primary btn-lg btn-block mt-4 shadow font-weight-bold">Place Order (₹<%=
+                                total.toFixed(2) %>)</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-5 mt-4 mt-lg-0">
+                <div class="summary-section border shadow-sm">
+                    <h4 class="border-bottom pb-3 mb-3">Order Summary</h4>
+                    <% cart.forEach(item=> { %>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center">
+                                <img src="<%= item.image %>" width="50" class="mr-3 rounded">
+                                <div>
+                                    <h6 class="mb-0">
+                                        <%= item.name %>
+                                    </h6>
+                                    <small class="text-muted">Qty: <%= item.quantity %></small>
+                                </div>
+                            </div>
+                            <span class="font-weight-bold">₹<%= (item.price * item.quantity).toFixed(2) %></span>
+                        </div>
+                        <% }) %>
+                            <hr>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal</span>
+                                <span>₹<%= total.toFixed(2) %></span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Shipping</span>
+                                <span class="text-success">Free</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between font-weight-bold h5">
+                                <span>Total Payable</span>
+                                <span class="text-primary">₹<%= total.toFixed(2) %></span>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">Arshit Traders &copy; 2026 | Safe and Secure Checkout</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

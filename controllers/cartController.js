@@ -69,3 +69,39 @@ exports.updateQuantity = (req, res) => {
     }
     res.redirect('/cart');
 };
+
+exports.getCheckout = (req, res) => {
+    const cart = req.session.cart || [];
+    if (cart.length === 0) {
+        return res.redirect('/cart');
+    }
+
+    let total = 0;
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+    });
+
+    res.render('checkout', {
+        cart: cart,
+        total: total
+    });
+};
+
+exports.placeOrder = (req, res) => {
+    const { fullName, email, address, phone, paymentMethod } = req.body;
+
+    // Here we would normally save the order to a database
+    // For now, we'll just clear the cart and show success
+
+    req.session.cart = [];
+
+    res.render('orderSuccess', {
+        orderInfo: {
+            fullName,
+            email,
+            address,
+            phone,
+            paymentMethod
+        }
+    });
+};

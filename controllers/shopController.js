@@ -14,3 +14,11 @@ exports.getHome = async (req, res) => {
         res.status(500).send('Server Error');
     }
 };
+
+exports.getRefundPolicy = (req, res) => {
+    res.render('refundPolicy');
+};
+
+exports.getTermsConditions = (req, res) => {
+    res.render('termsConditions');
+};
