@@ -59,13 +59,14 @@
         </div>
         <div class="col-md-4 col-sm-12 p-2 middle-menu">
           <small>
-            <i class="fa fa-phone"></i> Call us: +46 000 0000 &nbsp;|&nbsp;
-            <i class="fa fa-envelope"></i> Email: mhrj.asis@gmail.com
+            <i class="fa fa-phone"></i> Call us: : 8983160262 &nbsp;|&nbsp;
+            <i class="fa fa-envelope"></i> Email: arshittraders@proton.me
           </small>
         </div>
 
         <div class="col-md-4 col-sm-12 p-2 pr-3 right-menu">
           <small>
+            <a href="/terms-conditions">Terms & Conditions</a> &nbsp; <a href="/refund-policy">Refund Policy</a> &nbsp;
             <a href="#">My Account</a> &nbsp; <a href="#">Wishlist</a> &nbsp;
             <a href="/cart">Cart (<%= cartCount %>)</a>
           </small>
@@ -213,7 +214,7 @@
                     <%= product.category %>
                   </span>
                   <br />
-                  $<%= product.price %>
+                  ₹<%= product.price %>
                 </p>
                 <form action="/cart/add" method="POST" class="mt-1">
                   <input type="hidden" name="productId" value="<%= product._id %>">
@@ -315,7 +316,7 @@
                   </a>
 
                   <div class="">
-                    <span class="float-left"> $<%= product.price %> </span>
+                    <span class="float-left"> ₹<%= product.price %> </span>
                     <span class="float-right">
                       <form action="/cart/add" method="POST">
                         <input type="hidden" name="productId" value="<%= product._id %>">
@@ -581,8 +582,8 @@
           <ul class="list-unstyled text-small">
             <li><a class="text-muted" href="#">Team</a></li>
             <li><a class="text-muted" href="#">Indraprasti Society, Wing D, Flat No. 02 Akurdi Pune - 411035</a></li>
-            <li><a class="text-muted" href="#">Privacy</a></li>
-            <li><a class="text-muted" href="#">Terms</a></li>
+            <li><a class="text-muted" href="/refund-policy">Refund Policy</a></li>
+            <li><a class="text-muted" href="/terms-conditions">Terms & Conditions</a></li>
           </ul>
         </div>
       </div>
@@ -590,9 +591,9 @@
       <div class="row pb-3">
         <div class="col-md-6 col-sm-12">
           <small>
-            <a href="#">Privacy</a>
+            <a href="/refund-policy">Refund Policy</a>
             |
-            <a href="#">Terms</a>
+            <a href="/terms-conditions">Terms & Conditions</a>
           </small>
         </div>
         <div class="col-md-6 col-sm-12 designed-by">
